@@ -11,6 +11,8 @@ public class Main {
         newDLL.set(2, 9);
         newDLL.insert(2, 11);
         newDLL.remove(1);
+        newDLL.reverse();
         newDLL.printList();
     }
+
 }

@@ -135,25 +135,42 @@ public class DoublyLinkedList {
         return false;
     }
 
-    public Node remove(int index){
-        Node temp=get(index);
+    public Node remove(int index) {
+        Node temp = get(index);
         if (index == 0) {
             removeFirst();
             return temp;
         }
-        if (index == (length-1)) {
+        if (index == (length - 1)) {
             removeLast();
             return temp;
         }
         if (index > 0 && index < length) {
-            temp.next.prev=temp.prev;
-            temp.prev.next=temp.next;
+            temp.next.prev = temp.prev;
+            temp.prev.next = temp.next;
             temp.next = null;
             temp.prev = null;
             length--;
             return temp;
         }
         return temp;
+    }
+
+    public void reverse() {
+        Node current = head;
+        Node temp;
+
+        while (current != null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+
+            current = current.prev;
+        }
+
+        temp = head;
+        head = tail;
+        tail = temp;
     }
 
     class Node {
